@@ -8,6 +8,9 @@ const htmlPlugin = new HtmlWebPackPlugin({
 module.exports = {
     resolve: {
         extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
+        alias: {
+            'framework7$': 'framework7/framework7.esm.bundle.js'
+        }
     },
     module: {
         rules: [

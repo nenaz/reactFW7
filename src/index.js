@@ -1,5 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Root from './compponents/Root.jsx'
+import { params } from './routes'
 
-ReactDOM.render(<Root />, document.getElementById("index"));
+import Framework7React, { App, View, Page } from 'framework7-react';
+import Framework7 from 'framework7';
+Framework7.use(Framework7React);
+
+ReactDOM.render(
+  <App params={params}>
+    <View main url="/" />
+  </App>
+, document.getElementById("index"));

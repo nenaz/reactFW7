@@ -1,15 +1,21 @@
-const f7params = {
+import { WelcomePage } from './pages/welcome-page'
+
+export const params = {
   name: 'My App',
   id: 'com.myapp.test',
   // specify routes for app
   routes: [
     {
-      path: '/login',
-      component: welcomePage,
+      path: '/',
+      component: WelcomePage,
     },
     {
-      path: '/home/',
-      component: homePage,
+      path: '/login',
+      component: WelcomePage,
     },
+    // {
+    //   path: '/home/',
+    //   component: homePage,
+    // },
   ],
 };

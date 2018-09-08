@@ -29,11 +29,13 @@
     "webpack-dev-server": "^3.1.3"
   },
   "dependencies": {
+    "framework7": "^3.2.1",
     "framework7-react": "^3.2.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
     "redux-form": "^7.4.2"
   }
 }
