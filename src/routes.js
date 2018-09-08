@@ -4,16 +4,12 @@ const f7params = {
   // specify routes for app
   routes: [
     {
-      path: '/',
-      component: HomePage,
+      path: '/login',
+      component: welcomePage,
     },
     {
-      path: '/about/',
-      component: AboutPage,
-    },
-    {
-      path: '/login/',
-      component: LoginPage,
+      path: '/home/',
+      component: homePage,
     },
   ],
 };
