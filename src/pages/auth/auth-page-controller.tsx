@@ -1,20 +1,25 @@
 import * as React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { goAuth } from '@/modules/auth';
 import { AuthPage } from './auth-page';
-import { windowPopup, closeWindow } from './auth-page-popup-window';
 
 interface IAuthPageController {
   path: string,
+  goAuth: () => void,
 };
 
-export class AuthPageController extends React.PureComponent<IAuthPageController> {
-  handleAuth = () => {
-    console.log('handleAuth');
-    windowPopup();
+export class AuthPageControllerComponent extends React.PureComponent<IAuthPageController> {
+  handleAuth = async () => {
+    const response = await this.props.goAuth();
+    // @ts-ignore
+    if (response) {
+      // @ts-ignore
+      this.$f7router.navigate({ name: 'home' });
+    }
   };
 
   handlePopupClose = () => {
-    closeWindow();
+    // closeWindow();
   };
   
   render() {
@@ -24,9 +29,10 @@ export class AuthPageController extends React.PureComponent<IAuthPageController>
   }
 }
 
-// const mapStateToProps = create
-// const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  goAuth,
+};
 
-// export const AuthPageController = connect(
-//   null, mapDispatchToProps,
-// )(AuthPageComponent);
+export const AuthPageController = connect(
+  null, mapDispatchToProps,
+)(AuthPageControllerComponent);

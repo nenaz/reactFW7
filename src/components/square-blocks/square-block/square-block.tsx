@@ -1,21 +1,36 @@
 import * as React from 'react';
 import { Icon, Link } from 'framework7-react';
 import styles from '../square-blocks.module.scss';
+import { string } from 'prop-types';
 
 interface ISquareBlock {
   name: string,
   balance: string,
+  url: string,
+  endDate: string,
+  type: string,
+  number: string,
+  hide: boolean,
+  id: string,
 };
 
 export class SquareBlock extends React.PureComponent<ISquareBlock> {
   render() {
-    console.log('styles', styles);
+    const {
+      name,
+      balance,
+      url,
+      id,
+    } = this.props;
     return (
       <div className={styles['square-block']} >
-        <Link href="/account-view/" className={styles['square-block__link']}>
+        <Link
+          href={`${url}&id=${id}`}
+          className={styles['square-block__link']}
+        >
           <div>
             <span className={styles['square-block__account-title']}>
-              Name account
+              {name}
             </span>
           </div>
           <div className={styles['square-block__account-icon']}>
@@ -24,7 +39,7 @@ export class SquareBlock extends React.PureComponent<ISquareBlock> {
           </div>
           <div>
             <span className={styles['square-block__account-balance']}>
-              Account balance
+              {balance}
             </span>
           </div>
         </Link> 

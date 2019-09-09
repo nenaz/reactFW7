@@ -28,7 +28,7 @@ export class AuthPage extends React.PureComponent<IAuthPage> {
     return (
       <Page name="login" title="Авторизация">
         <Block className={styles['auth-page-block']}>
-          <Button href="/home/" raised fill>Войти</Button>
+          <Button onClick={handleAuth} raised fill>Войти</Button>
         </Block>
       </Page>
     );

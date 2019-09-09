@@ -3,6 +3,7 @@ import { AuthPage } from './pages/auth';
 import { AboutPage } from './pages/about';
 import { AccountPage } from './pages/accounts-page';
 import { Framework7Params } from 'framework7/components/app/app-class';
+import { withAuth } from './modules/auth/with-auth';
 
 export const f7params: Framework7Params = {
   name: 'My App',
@@ -11,18 +12,20 @@ export const f7params: Framework7Params = {
   // @ts-ignore
   routes: [
     {
-      path: '/account-view',
-      component: AccountPage,
+      path: '/account',
+      component: withAuth(AccountPage),
     },
     {
+      name: 'home',
       path: '/home',
-      component: HomePage,
+      component: withAuth(HomePage),
     },
     {
       path: '/about/',
       component: AboutPage,
     },
     {
+      name: 'auth',
       path: '/auth/',
       component: AuthPage,
     },

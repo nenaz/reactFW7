@@ -2,22 +2,24 @@ import * as React from 'react';
 import { reduxForm } from 'redux-form';
 import { AccountsPage } from './accounts-page';
 
-interface IAccountsPageFormComponent {};
+interface IAccountsPageFormComponent {
+  createRightPart: Function,
+};
 
 export class AccountsPageFormComponent extends React.PureComponent<IAccountsPageFormComponent> {
   render() {
+    console.log('this.props', this.props);
     return (
-      <AccountsPage {...this.props}/>
+      <AccountsPage
+        RightPartComponent={this.props.createRightPart()}
+        {...this.props}
+      />
     );
   }
 }
 
 export const AccountsPageForm = reduxForm({
-  form: 'accounts-view',
-  // initialValues: {
-  //   login: 'nenaz',
-  //   password: '4276',
-  // },
+  form: 'accounts',
   enableReinitialize: true,
 // @ts-ignore
 })(AccountsPageFormComponent);

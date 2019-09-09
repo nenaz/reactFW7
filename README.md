@@ -1,3 +1,17 @@
+1) Подумать как сделать компоненты счетов:
+  в строку + свайп для удаления или еще чего;
+  таблицей, без свайпа. кнопки редактирования только при заходе в счет на верхней панели
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

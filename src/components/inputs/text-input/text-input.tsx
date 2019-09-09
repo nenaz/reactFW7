@@ -7,10 +7,6 @@ interface ITextInput {
 };
 
 export class TextInput extends React.PureComponent<ITextInput> {
-  handleChange = (event: Object) => {
-    console.log('change', event);
-  }
-
   render() {
     const { className, placeholder } = this.props;
 
@@ -19,10 +15,9 @@ export class TextInput extends React.PureComponent<ITextInput> {
         <ListInput
           className={className}
           placeholder={placeholder}
-          label="Name"
+          label={placeholder}
           type="text"
           floatingLabel
-          onInputClear={this.handleChange}
           {...this.props}
         ><Icon icon="demo-list-icon" slot="media"/></ListInput>
       </List>
