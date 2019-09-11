@@ -27,22 +27,22 @@ export class Accounts extends React.PureComponent<IAccounts> {
           {map(accountsData, (accountData: IFetchAccountData) => {
             const {
               id,
-              name,
-              balance,
+              accountName,
+              amount,
               endDate,
               type,
-              number,
+              accountNumber,
               hide,
             } = accountData;
             return (
               <SquareBlock
                 key={id}
                 id={id}
-                name={name}
-                balance={balance}
+                accountName={accountName}
+                amount={amount}
                 endDate={endDate}
                 type={type}
-                number={number}
+                accountNumber={accountNumber}
                 hide={hide}
                 url={ACCOUNTS_WIDGET_VIEW}
               />

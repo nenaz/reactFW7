@@ -1,19 +1,15 @@
-
-
-const getWebToken = () => {
-  return JSON.parse(localStorage.getItem('localOptions')  || '{}').webToken;
-}
+import { getCurrentAuthorizationToken } from '@/modules/auth';
 
 export const Send = (name: string, params = {}, type = 'POST') => {
-  const webToken = getWebToken();
   const serverUrl = 'http://127.0.0.1:5000/';
   return new Promise(function (resolve, reject) {
     var xhr = new XMLHttpRequest();
     xhr.open(type, serverUrl + name, true);
     xhr.onprogress = (event) => { }
     xhr.setRequestHeader('Content-Type', 'application/json');
-    if (name !== 'newUser' && name !== 'authUser' && name !== 'setPass') {
-
+    const webToken = getCurrentAuthorizationToken();
+    if (name !== 'newUser' && name !== 'authUser' && name !== 'setPass' && webToken) {
+      console.log('webToken', webToken)
       xhr.setRequestHeader('Authorization', webToken);
     }
     xhr.timeout = 15000;

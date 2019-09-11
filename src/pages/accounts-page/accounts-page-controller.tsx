@@ -7,7 +7,7 @@ import { get } from 'lodash';
 import { AccountsPageForm } from './accounts-page-form';
 import { ACCOUNTS_TYPE_VIEW } from '@/widgets/accounts/accounts-constants';
 import { getAccountData } from '@/widgets/accounts/accounts-selectors';
-import { saveAccountsData } from '@/widgets/accounts';
+import { saveAccount } from './accounts-page-actions';
 
 interface IAccountViewForm {
   match: any,
@@ -16,12 +16,12 @@ interface IAccountViewForm {
       type: string,
     },
   },
-  saveAccountsData: Function,
+  saveAccount: Function,
 };
 
 class AccountsPageComponent extends React.PureComponent<IAccountViewForm> {
   handleSaveAccount = () => {
-    this.props.saveAccountsData();
+    this.props.saveAccount();
     // @ts-ignore
     this.$f7router.back();
   };
@@ -78,7 +78,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  saveAccountsData,
+  saveAccount,
 };
 
 export const AccountsPageController = compose(

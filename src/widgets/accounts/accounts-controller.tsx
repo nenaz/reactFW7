@@ -2,18 +2,18 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { Accounts } from './accounts';
-import { fetchAccountsData } from './accounts-actions';
+import { fetchAccounts } from './accounts-actions';
 import { IFetchAccountData } from './accounts-types';
 import { getAccountsData } from './accounts-selectors';
 
 interface IAccountControllerComponent {
-  fetchAccountsData: () => IFetchAccountData[],
   accountsData: IFetchAccountData[],
+  fetchAccounts: Function,
 };
 
 class AccountControllerComponent extends React.PureComponent<IAccountControllerComponent> {
   componentDidMount() {
-    this.props.fetchAccountsData();
+    this.props.fetchAccounts();
   }
   
   render() {
@@ -30,7 +30,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  fetchAccountsData,
+  fetchAccounts,
 };
 
 export const AccountsController = connect(

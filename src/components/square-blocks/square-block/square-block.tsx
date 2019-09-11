@@ -4,12 +4,12 @@ import styles from '../square-blocks.module.scss';
 import { string } from 'prop-types';
 
 interface ISquareBlock {
-  name: string,
-  balance: string,
+  accountName: string,
+  amount: number,
   url: string,
   endDate: string,
   type: string,
-  number: string,
+  accountNumber: string,
   hide: boolean,
   id: string,
 };
@@ -17,8 +17,8 @@ interface ISquareBlock {
 export class SquareBlock extends React.PureComponent<ISquareBlock> {
   render() {
     const {
-      name,
-      balance,
+      accountName,
+      amount,
       url,
       id,
     } = this.props;
@@ -30,7 +30,7 @@ export class SquareBlock extends React.PureComponent<ISquareBlock> {
         >
           <div>
             <span className={styles['square-block__account-title']}>
-              {name}
+              {accountName}
             </span>
           </div>
           <div className={styles['square-block__account-icon']}>
@@ -39,7 +39,7 @@ export class SquareBlock extends React.PureComponent<ISquareBlock> {
           </div>
           <div>
             <span className={styles['square-block__account-balance']}>
-              {balance}
+              {amount}
             </span>
           </div>
         </Link> 
