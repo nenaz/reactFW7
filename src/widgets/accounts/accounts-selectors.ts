@@ -21,3 +21,8 @@ export const getAccountData = createSelector(
     return filteredValue[0];
   },
 );
+
+export const getAccountsLength = createSelector(
+  getAccountsData,
+  (accountsData: Object[]): number => get(accountsData, 'length', 0),
+);

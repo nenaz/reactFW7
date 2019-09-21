@@ -48,3 +48,5 @@ export interface IFetchAccountData {
    */
   _id: string,
 };
+
+export interface ISaveResponse {};

@@ -15,14 +15,17 @@ import { ACCOUNTS_WIDGET_VIEW, ACCOUNTS_WIDGET_NEW } from './accounts-constants'
 
 interface IAccounts {
   accountsData: IFetchAccountData[],
+  accountsDataLength: number,
 };
 
 export class Accounts extends React.PureComponent<IAccounts> {
   render() {
-    const { accountsData } = this.props;
+    const { accountsData, accountsDataLength } = this.props;
     return (
       <Widget className={accounts.wrapper}>
-        <BlockTitle>ACCOUNTS</BlockTitle>
+        <BlockTitle>
+          {`ACCOUNTS (${accountsDataLength})`}
+        </BlockTitle>
         <div className={accounts['wrapper__parent-block']}>
           {map(accountsData, (accountData: IFetchAccountData) => {
             const {

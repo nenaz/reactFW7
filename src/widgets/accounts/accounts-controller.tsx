@@ -4,10 +4,11 @@ import { createStructuredSelector } from 'reselect';
 import { Accounts } from './accounts';
 import { fetchAccounts } from './accounts-actions';
 import { IFetchAccountData } from './accounts-types';
-import { getAccountsData } from './accounts-selectors';
+import { getAccountsData, getAccountsLength } from './accounts-selectors';
 
 interface IAccountControllerComponent {
   accountsData: IFetchAccountData[],
+  accountsDataLength: number,
   fetchAccounts: Function,
 };
 
@@ -20,6 +21,7 @@ class AccountControllerComponent extends React.PureComponent<IAccountControllerC
     return (
       <Accounts
         accountsData={this.props.accountsData}
+        accountsDataLength={this.props.accountsDataLength}
       />
     );
   }
@@ -27,6 +29,7 @@ class AccountControllerComponent extends React.PureComponent<IAccountControllerC
 
 const mapStateToProps = createStructuredSelector({
   accountsData: getAccountsData,
+  accountsDataLength: getAccountsLength,
 });
 
 const mapDispatchToProps = {

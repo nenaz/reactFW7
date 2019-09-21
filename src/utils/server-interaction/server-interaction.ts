@@ -1,4 +1,5 @@
 import { getCurrentAuthorizationToken } from '@/modules/auth';
+import { createF7Alert } from '@/modules/alert';
 
 export const Send = (name: string, params = {}, type = 'POST') => {
   const serverUrl = 'http://127.0.0.1:5000/';
@@ -25,7 +26,6 @@ export const Send = (name: string, params = {}, type = 'POST') => {
         resolve(obj);
       } else {
         const error = new Error(this.statusText);
-        // error.code = this.status;
         reject(error);
       }
     };
@@ -37,8 +37,9 @@ export const Send = (name: string, params = {}, type = 'POST') => {
       }
       resolve(obj);
     }
-    xhr.onerror = function () {
-      reject(new Error("Network Error"));
+    xhr.onerror = function (error: any) {
+      // createF7Alert(error.type, 'Error xhr');
+      reject(console.log('error', error));
     };
     xhr.send(JSON.stringify(params));
   });

@@ -5,9 +5,14 @@ import { Button } from 'framework7-react';
 import { compose } from 'redux';
 import { get } from 'lodash';
 import { AccountsPageForm } from './accounts-page-form';
-import { ACCOUNTS_TYPE_VIEW } from '@/widgets/accounts/accounts-constants';
-import { getAccountData } from '@/widgets/accounts/accounts-selectors';
-import { saveAccount } from './accounts-page-actions';
+// import { ACCOUNTS_TYPE_VIEW } from '@/widgets/accounts/accounts-constants';
+// import { getAccountData } from '@/widgets/accounts/accounts-selectors';
+import {
+  saveAccountData,
+  getAccountData,
+  ACCOUNTS_TYPE_VIEW,
+  deleteAccount,
+} from '@/widgets/accounts';
 
 interface IAccountViewForm {
   match: any,
@@ -16,12 +21,13 @@ interface IAccountViewForm {
       type: string,
     },
   },
-  saveAccount: Function,
+  saveAccountData: Function,
+  deleteAccount: Function,
 };
 
 class AccountsPageComponent extends React.PureComponent<IAccountViewForm> {
   handleSaveAccount = () => {
-    this.props.saveAccount();
+    this.props.saveAccountData();
     // @ts-ignore
     this.$f7router.back();
   };
@@ -29,6 +35,7 @@ class AccountsPageComponent extends React.PureComponent<IAccountViewForm> {
   handleDeleteAccount = () => {
     // @ts-ignore
     this.$f7.dialog.confirm('Are you feel good today?', () => {
+      this.props.deleteAccount();
       // @ts-ignore
       this.$f7router.back();
     });
@@ -78,7 +85,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = {
-  saveAccount,
+  saveAccountData,
+  deleteAccount,
 };
 
 export const AccountsPageController = compose(

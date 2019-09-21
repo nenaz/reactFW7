@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { ListInput, List, Icon } from 'framework7-react';
+import cn from 'classnames';
+import textInput from './text-input.module.scss';
 
 interface ITextInput {
   className?: string,
@@ -11,7 +13,10 @@ export class TextInput extends React.PureComponent<ITextInput> {
     const { className, placeholder } = this.props;
 
     return (
-      <List noHairlinesMd>
+      <List
+        noHairlinesMd
+        className={cn(className, textInput['text-input'])}
+      >
         <ListInput
           className={className}
           placeholder={placeholder}
