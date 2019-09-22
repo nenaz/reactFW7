@@ -30,7 +30,6 @@ export class AuthPage extends React.PureComponent<IAuthPage> {
       <Page name="login" title="Авторизация">
         <Block className={styles['auth-page-block']}>
           <Button onClick={handleAuth} raised fill>Войти</Button>
-          <Button onClick={handleMessage} raised fill>Написать</Button>
         </Block>
       </Page>
     );

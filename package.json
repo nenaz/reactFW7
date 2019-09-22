@@ -70,6 +70,7 @@
     "react-fontawesome": "^1.6.1",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
+    "react-yandex-maps": "^4.0.1",
     "redux": "^4.0.4",
     "redux-form": "^8.2.5",
     "redux-thunk": "^2.3.0",
@@ -88,7 +89,8 @@
     "webpack": "4.29.6",
     "webpack-dev-server": "3.2.1",
     "webpack-manifest-plugin": "2.0.4",
-    "workbox-webpack-plugin": "4.2.0"
+    "workbox-webpack-plugin": "4.2.0",
+    "yandex-map-react": "^1.1.1"
   },
   "scripts": {
     "start": "node scripts/start.js",

@@ -34,8 +34,8 @@ export class AuthPageControllerComponent extends React.PureComponent<IAuthPageCo
   render() {
     return (
       <AuthPage
-        // handleAuth={this.handleAuth}
-        handleAuth={this.handleWSconnect}
+        handleAuth={this.handleAuth}
+        // handleAuth={this.handleWSconnect}
         handleMessage={this.handleWsSend}
         path="/"
       />
