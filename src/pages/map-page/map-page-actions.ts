@@ -1,3 +1,37 @@
+import { Dispatch } from "redux";
+import { Send } from "@/utils/server-interaction";
+import { WsConnection } from "@/utils/server-websocket";
+import { getAuthUserId } from "@/modules/auth";
+import { getCoordinates } from "./map-page-selectors";
+// import { setCurrentPositionAction, setUserCoordinaterAction } from "@/modules/coordinates/coordinates-actions";
+
+const ws = new WsConnection();
+
+export const getWsConnect = () => (dispatch: Function, getState: Function) => {
+  const connect = ws.wsConnect();
+  const state = getState();
+  if (connect.id) {
+    const userId = getAuthUserId(state);
+    dispatch({
+      type: 'SET_WS_CONNECT',
+      payload: {
+        connectId: connect.id,
+        userId,
+      },
+    })
+  }
+};
+
+export const sendMessageForWs = (message: string) => (dispatch: Function, getState: Function) => {
+  const state = getState();
+  const userId = getAuthUserId(state);
+  const newCoord = getCoordinates(state);
+  console.log('newCoord', newCoord);
+  ws.wsOnmessage(userId, newCoord);
+};
+// console.log('connect', connect);
+// 
+
 // import { find } from 'lodash';
 // import { GET_ACTUAL_MAP_COORD, GET_START_USER_COORD } from './map-page-constants';
 // import { getAllUsers } from '@/modules/users';
@@ -23,3 +57,5 @@
 //     payload: user.coordinates,
 //   });
 // };
+
+// export const SET_USER_ONLINE = `${USER_STORE_KEY}/SET_CURRENT_POSITION`;

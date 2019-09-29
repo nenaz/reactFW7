@@ -18,13 +18,13 @@ const onSubmit = () => {
 
 interface IAuthPage {
   handleAuth: () => void,
-  handleMessage: () => void,
+  // handleMessage: () => void,
   path: string,
 };
 
 export class AuthPage extends React.PureComponent<IAuthPage> {
   render() {
-    const { handleAuth, handleMessage } = this.props;
+    const { handleAuth,  } = this.props;
 
     return (
       <Page name="login" title="Авторизация">

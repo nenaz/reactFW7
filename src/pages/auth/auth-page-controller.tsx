@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { goAuth } from '@/modules/auth';
 import { AuthPage } from './auth-page';
-import { wsConnect, wsSend } from '@/utils/server-websocket';
+// import { wsConnect } from '@/utils/server-websocket';
 
 interface IAuthPageController {
   path: string,
@@ -19,13 +19,13 @@ export class AuthPageControllerComponent extends React.PureComponent<IAuthPageCo
     }
   };
 
-  handleWSconnect = () => {
-    wsConnect();
-  };
+  // handleWSconnect = () => {
+  //   wsConnect();
+  // };
 
-  handleWsSend = () => {
-    wsSend();
-  }
+  // handleWsSend = () => {
+  //   wsSend();
+  // }
 
   handlePopupClose = () => {
     // closeWindow();
@@ -36,7 +36,7 @@ export class AuthPageControllerComponent extends React.PureComponent<IAuthPageCo
       <AuthPage
         handleAuth={this.handleAuth}
         // handleAuth={this.handleWSconnect}
-        handleMessage={this.handleWsSend}
+        // handleMessage={this.handleWsSend}
         path="/"
       />
     );
